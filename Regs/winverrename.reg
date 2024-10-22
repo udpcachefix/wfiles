@@ -1,6 +1,0 @@
-Windows Registry Editor Version 5.00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion]
-"PathName"="C:\\Windows"
-"RegisteredOwner"="Stephan Steiner"
-"RegisteredOrganization"="Bunny's custom shit"

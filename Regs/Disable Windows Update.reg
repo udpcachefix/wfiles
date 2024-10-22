@@ -1,8 +1,5 @@
 Windows Registry Editor Version 5.00
 
-;--- Disable Windows Update.
-;---------------------------
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]
 "AUOptions"=dword:00000002
 
