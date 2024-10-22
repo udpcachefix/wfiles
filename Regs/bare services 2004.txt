@@ -1,0 +1,15 @@
+Audiosrv
+CoreMessaging > manual
+DcomLaunch > manual
+LSM
+NVDisplayContainer
+Power
+prio_svc
+ProfSvc
+RpcEptMapper
+RpcSs
+StateRepository > manual
+STR (set timer resolution)
+
+not specified = automatic
+anything else not mentioned disbaled + stopped
