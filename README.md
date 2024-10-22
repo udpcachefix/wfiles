@@ -1,5 +1,5 @@
 # Windows 10 "1709-BTM.reg" & "1709-RIPPER.reg"
-BTM is the safer version - running RIPPER will break a lot of things.
+BTM is the safer and recommended version.
 RIPPER will - yes will! - break a lot of things. Make sure you know what you're doing and have a few fixed at hand before applying.
 
 Brief summary of what BTM does:
