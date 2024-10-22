@@ -50,5 +50,5 @@ This registry file makes various changes to the Windows settings. Here's a brief
 # Windows 10 1909 & Windows 10 2004 (1909.ps & 2004.ps)
 This script sets the startup type of the services in the $automaticServices array to Automatic, the services in the $manualServices array to Manual, and all other services to Disabled. If a service is not found, Set-Service will throw an error, which you can ignore if the service is not installed on your system. If you want to suppress these errors, you can add -ErrorAction SilentlyContinue to the Set-Service commands.
 
-# Windows 10 LTSC All-in-One (10-AIO.bat)
-Technically, there is no need to "tweak" anything in LTSC, however, it just runs so smooth and that's all you want in Windows 10 LTSC.
+# Reg and Script files
+Just a backup collection I've had a few years ago. I don't bother updating much of it, nor do I use or recommend anything from it.
