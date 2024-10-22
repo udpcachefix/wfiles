@@ -1,3 +1,57 @@
+# Files OLD (folder)
+Basically, something to ignore. Just a old backed up collection.
+
+# BCD Edit
+1. bcdedit /deletevalue useplatformclock
+Change: Deletes the value for useplatformclock from the boot configuration.
+Effect: This setting typically determines whether the system should use the platform clock (the hardware timer). Removing it allows the system to use the default timer instead, which may improve performance in certain scenarios.
+
+3. bcdedit /set disabledynamictick yes
+Change: Enables the disabledynamictick setting.
+Effect: This prevents the system from dynamically adjusting the timer tick rate based on workload. Disabling dynamic ticks can reduce latency and improve performance for time-sensitive applications but might lead to increased power consumption.
+
+5. bcdedit /set useplatformtick yes
+Change: Forces the use of the platform clock as the timer for the system.
+Effect: This can enhance timing accuracy, especially in virtualized environments, but might negatively affect performance in certain situations compared to other timer options.
+
+7. bcdedit /timeout 2
+Change: Sets the boot manager timeout to 2 seconds.
+Effect: This reduces the time that the boot menu is displayed. If you have multiple operating systems installed, the menu will appear for only 2 seconds before booting the default OS. This is useful for speeding up the boot process if you don’t need to select an OS frequently.
+
+9. bcdedit /set nx optout
+Change: Sets the Data Execution Prevention (DEP) feature to opt-out.
+Effect: DEP helps prevent malicious code from executing in certain regions of memory. Setting it to opt-out can lead to decreased security, as it may allow more types of executable code to run.
+
+11. bcdedit /set bootux disabled
+Change: Disables the boot user experience (boot UX).
+Effect: This change removes graphical elements and animations during boot, leading to a more straightforward and potentially faster boot process.
+
+13. bcdedit /set bootmenupolicy standard
+Change: Sets the boot menu policy to standard mode.
+Effect: This enables the classic boot menu rather than the newer graphical one. It may be faster and use fewer resources.
+
+15. bcdedit /set hypervisorlaunchtype off
+Change: Disables the hypervisor from launching.
+Effect: If you’re not using virtualization (e.g., Hyper-V), this can help improve system performance by preventing the overhead associated with the hypervisor.
+
+17. bcdedit /set tpmbootentropy ForceDisable
+Change: Disables the TPM (Trusted Platform Module) boot entropy.
+Effect: This setting relates to how secure boot keys are generated. Disabling this might reduce security features related to boot integrity.
+
+19. bcdedit /set quietboot yes
+Change: Enables quiet boot mode.
+Effect: This suppresses boot messages and graphical elements during startup, providing a cleaner boot experience. It might slightly improve boot speed.
+
+21. powercfg -h off
+Change: Disables the hibernation feature.
+Effect: This will turn off hibernation, which can save disk space by removing the hiberfil.sys file used to store the system state during hibernation. This can also slightly improve boot time since the system will not need to load from hibernation.
+
+Summary
+Overall, these settings are aimed at optimizing boot performance and reducing latency, potentially at the cost of some security and graphical enhancements. They may be particularly useful in scenarios where speed and responsiveness are prioritized, such as on gaming or performance-focused systems. However, it's essential to consider the trade-offs, especially regarding security features like DEP and TPM.
+
+# RAM Split Threshold allocation
+The script adjusts how the Windows operating system allocates memory to system services based on the available RAM. By modifying the SvcHostSplitThresholdInKB value, the script ensures that services are better distributed across multiple processes, improving performance and reliability as the system's available memory increases.
+
 # Windows 10 "1709-BTM.reg" & "1709-RIPPER.reg"
 BTM is the safer and recommended version.
 RIPPER will - yes will! - break a lot of things. Make sure you know what you're doing and have a few fixed at hand before applying.
@@ -50,8 +104,11 @@ This registry file makes various changes to the Windows settings. Here's a brief
 # Windows 10 1909 & Windows 10 2004 (1909.ps & 2004.ps)
 This script sets the startup type of the services in the $automaticServices array to Automatic, the services in the $manualServices array to Manual, and all other services to Disabled. If a service is not found, Set-Service will throw an error, which you can ignore if the service is not installed on your system. If you want to suppress these errors, you can add -ErrorAction SilentlyContinue to the Set-Service commands.
 
-# RAM allocation
-The script adjusts how the Windows operating system allocates memory to system services based on the available RAM. By modifying the SvcHostSplitThresholdInKB value, the script ensures that services are better distributed across multiple processes, improving performance and reliability as the system's available memory increases.
+# System Restore Point
+In summary, this script will do the following, when set as task directly after system boot up, at least.. that's for what I've been using it.
+- Deletes all existing system restore points.
+- Waits for 5 minutes.
+- Creates a new restore point named "Custom Restore Point."
 
 # All-in-one Windows 10
 Here's a breakdown of its main changes:
@@ -84,3 +141,6 @@ Modifies registry keys related to Microsoft Edge phishing filter and the EnableW
 Defender and SecurityHealthService Disabling:
 Disables Windows Defender and various associated components like the SecurityHealthService, preventing Windows Defender from running.
 In summary, this script performs a combination of file permissions changes, system performance optimizations, disabling of updates, and removal of several security-related services and features.
+
+# Not included
+Files that arent included are either not important or do not need an explanation.
